@@ -44,7 +44,7 @@ pipeline {
 	    docker pull $NGINX_IMAGE 
 		
 	    docker stop Nodejs || true
-	    docker rm Nodejs|| true
+	    docker rm Nodejs || true
 	    docker stop Nginx || true
 	    docker rm Nginx || true
 		
@@ -57,8 +57,7 @@ EOF
 '''
         }
     }
+}       
 }
-        
 }
 }
-
