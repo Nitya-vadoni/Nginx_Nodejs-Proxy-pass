@@ -4,7 +4,7 @@ pipeline {
       DOCKER_USER = "nityavadoni"
       NODE_IMAGE = "${DOCKER_USER}/node-app"
       NGINX_IMAGE = "${DOCKER_USER}/nginx"
-      VM-IP = "98.80.222.243"
+      VM_IP = "98.80.222.243"
 
     stages {
         stage('Build docker images') { 
