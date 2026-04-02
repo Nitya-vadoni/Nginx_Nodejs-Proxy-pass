@@ -5,12 +5,12 @@ pipeline {
       NODE_IMAGE = "${DOCKER_USER}/node-app"
       NGINX_IMAGE = "${DOCKER_USER}/nginx"
       VM_IP = "98.80.222.243"
-
+	 }
     stages {
         stage('Build docker images') { 
             steps {
-                sh 'docker build -f Dockerfile-Node -t $NODE_IMAGE .'
-		sh 'docker build -f Dockerfile-Nginx -t $NGINX_IMAGE .'
+                sh 'docker build -f Dockerfile-Node -t $NODE_IMAGE:latest .'
+		sh 'docker build -f Dockerfile-Nginx -t $NGINX_IMAGE:latest .'
                 
             }
         }
@@ -48,16 +48,15 @@ pipeline {
 	    docker stop Nginx || true
 	    docker rm Nginx || true
 		
-	    docker create network net-app
+	    docker network create net-app
 	
 	    docker run -d -p 3000:3000 --name Nodejs --network net-app $NODE_IMAGE
-	    docker run -d -p 80:80 --name Nginx --network net-app $NGINX
+	    docker run -d -p 80:80 --name Nginx --network net-app $NGINX_IMAGE
 	    
 EOF
 '''
         }
     }
 }       
-}
 }
 }
