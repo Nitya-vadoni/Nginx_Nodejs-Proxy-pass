@@ -52,15 +52,13 @@ pipeline {
 	
 	    docker run -d -p 3000:3000 --name Nodejs --network net-app $NODE_IMAGE
 	    docker run -d -p 80:80 --name Nginx --network net-app $NGINX
-	
-	    EOF
-	    ...
-
-		}
-	   }
-
-	}
-
+	    
+EOF
+'''
+        }
     }
+}
+        
+}
 }
 
